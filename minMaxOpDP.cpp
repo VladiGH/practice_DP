@@ -11,44 +11,43 @@ using namespace std;
 
 
 int minM(int num1, int num2, int num3){
+    if((num1 == num2) && num1 < num3  ) return num1;
+    if((num2 == num3) && num2 < num1 ) return num2;
+    if((num3 == num1) && num3 < num2 ) return num3;
+    
     if(num1 < num2 && num1 < num3) return num1;
     if(num2 < num1 && num2 < num3) return num2;
-    else return num3; 
+    if(num3 < num1 && num3 < num2) return num3;
 }
 
 int maxM(int num1, int num2, int num3){
+    if((num1 == num2) && num1 > num3  ) return num1;
+    if((num2 == num3) && num2 > num1 ) return num2;
+    if((num3 == num1) && num3 > num2 ) return num3;
+    
     if(num1 > num2 && num1 > num3) return num1;
     if(num2 > num1 && num2 > num3) return num2;
-    else return num3;
+    if(num3 > num1 && num3 > num2) return num3;
 }
 
 int main(){
     int num = 12;
-    int respuesta[num];
+    int respuesta[num + 1];
+    long numero = -100000000; //si se quiere el min cambiarlo a positivo
     int tamannio = sizeof(respuesta)/ sizeof(respuesta[0]);
-    respuesta[0] = 0;
-    for (int i = 1; i < num; i++){
+    respuesta[0] = 12345;
+    respuesta[1] = 0;
+    for (int i = 2; i < num + 1; i++){
+        
+        int restaUno = i-1;
         int divDos = i/2;
         int divTres = i/3;
-        if(i == 4) cout<<"A VER: "<< respuesta[2]<<endl;        
-        respuesta[i] = (1 +
-                        minM(respuesta[i-1], 
-                        (i % 2 == 0)? respuesta[i / 2]: 10000000000, 
-                        (i % 3 == 0)? respuesta[i / 3]: 10000000000 )
+        respuesta[i] = (1+ maxM(respuesta[i-1], 
+                        (i % 2 == 0)? respuesta[i/2]: numero, 
+                        (i % 3 == 0)? respuesta[i/3]: numero )
                         );
-        if(i%2==0) cout<<"esto es i/2: "<< respuesta[divDos]<<"   "<<divDos<<"   "<<" iteracion: "<<i<<endl;
-        if(i%3==0) cout<<"esto es i/3: "<< respuesta[divTres]<<"   "<<divTres<<"   "<<" iteracion: "<<i<<endl;
-        
-        
+    }
     
-    }
-
-    for(int i = 0; i< tamannio; i++){
-        cout<< respuesta[i]<<"-";
-    }
-    cout<<endl;
-
-
-
+    cout<<"El max es: "<<respuesta[num]<<endl;
     return 0;
 }

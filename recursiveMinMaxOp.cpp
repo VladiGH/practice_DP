@@ -39,7 +39,7 @@ int tresOperacionesMax(int num){
     );
 }
 int main(){
-    cout<<"Minimo de operaciones: "<<tresOperacionesMin(12)<<endl;
+    cout<<"Minimo de operaciones: "<<tresOperacionesMin(3)<<endl;
     cout<<"Máximo de operaciones: "<<tresOperacionesMax(12)<<endl;
 
     return 0;
