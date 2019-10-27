@@ -69,6 +69,8 @@ int main(){
                     //emulando el minimo
                     if(1+ matrix[i][darVuelto[j-1]-denom[i-1] + 1] == matrix[i-1][j]){ //El caso en que la suma de dos  
                                                                                     //conjuntos diferentes de el mismo vuelto
+
+                        //TOMAMOS PRIORIDAD 1+ matrix[i][darVuelto[j-1]-denom[i-1] + 1]
                         if((darVuelto[j-1]-denom[i-1]) < denom[i-1]){//si la resta del vuelto con la moneda que tengo 
                                                                     //es menor que la denominacion de la moneda que tengo
                             matrixCadena[i][j] ="1*"+ denomS[i-1]+"c-"+matrixCadena[i][darVuelto[j-1]-denom[i-1]+1] ;
