@@ -49,6 +49,11 @@ int main()
     
     //La respuesta queda en la esquina inferior derecha
     cout << M[n][K] << "\n";
-
+for (int i = 0; i<n+1;i++){
+        for (int j = 0; j<K+1;j++){
+            cout<<M[i][j]<<" | ";
+        }   
+        cout<<endl;    
+    }
     return 0;
 }
