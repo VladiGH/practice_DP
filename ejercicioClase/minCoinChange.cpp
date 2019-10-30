@@ -43,7 +43,14 @@ int main()
                 M[i][j] = min(1+M[i][j-coins.at(i-1)],M[i-1][j]);
     
     //La respuesta queda en la esquina inferior derecha
-    cout << M[n][V] << "\n";
-
+    
+    for (int i = 0; i < n+1; i++){
+        for(int j = 0; j< V+1; j++){
+            cout<<M[i][j]<<" | " ;
+        }
+        cout<<"\n";
+    }
+    cout << M[n][V];
+    cout<<endl;
     return 0;
 }
