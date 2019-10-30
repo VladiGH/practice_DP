@@ -11,21 +11,21 @@ int main(){
         vector <int> sequences;
         int seq;
         
-        vector <int> juegos;
-        juegos.push_back(0);//primer elemento trivial
-
         for (int i = 0; i<N; i++){
             cin>> seq;
             sequences.push_back(seq);
         }
+        int maxN = 0, acum=0;
         for (int i = 0; i<N; i++){
-            if(sequences[i] > 0) juegos.push_back(juegos[i] + sequences[i]); 
-            if(sequences[i] < 0) juegos.push_back(juegos[i] + sequences[i]);
+            acum += sequences[i];
+            
+            if(acum > maxN) maxN = acum ;
+            if(acum < 0) acum = 0;
+                
         }
-
-        int streak = *max_element(juegos.begin(), juegos.end());
-        if(streak <= 0) cout<< "Losing streak."<<endl;
-        else cout<<"The maximum winning streak is " <<streak<<endl;
+        
+        if(acum <= 0) cout<< "Losing streak."<<endl;
+        else cout<<"The maximum winning streak is " <<maxN<<endl;
 
         cin >> N;
         if (N<0 || N>10000) return 0 ;
